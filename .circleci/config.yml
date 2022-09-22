@@ -29,7 +29,8 @@ jobs:
       - run:
           name: Run
           command: |
-            pwd
+            cd build
+            ./chip8
 
 workflows:
   version: 2

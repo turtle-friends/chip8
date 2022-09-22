@@ -15,6 +15,7 @@ jobs:
             apk upgrade 
             apk add build-base
             apk add cmake
+            apk add curl
       - sonarcloud/scan
       - run:
           name: Build and run

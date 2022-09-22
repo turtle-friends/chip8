@@ -1,11 +1,15 @@
 version: 2.1
-jobs:
-  build:
+executors:
+  ubuntu:
     docker:
       - image: ubuntu:18.04
         auth:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD
+
+jobs:
+  install:
+    executor: ubuntu
     steps:
       - checkout
       - run:
@@ -15,9 +19,10 @@ jobs:
             apt upgrade -y 
             apt install -y build-essential
             apt install -y cmake 
-            apt install -y curl
-            apt install -y zip
-            apt install -y unzip
+            mkdir project
+  run:
+    executor: ubuntu
+    steps:
       - run:
           name: Build and run
           command: |
@@ -26,13 +31,9 @@ jobs:
             cmake ..
             ./chip8
 
-
-
-orbs:
-  sonarcloud: sonarsource/sonarcloud@1.0.3
-
 workflows:
+  version: 2
   cpp-workflow:
     jobs:
-      - build:
-          context: SonarCloud
+      - install
+      - run

@@ -16,6 +16,10 @@ jobs:
             apk add build-base
             apk add cmake
       - sonarcloud/scan
+
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.3
+
 workflows:
   cpp-workflow:
     jobs:

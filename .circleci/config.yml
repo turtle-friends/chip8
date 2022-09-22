@@ -21,13 +21,15 @@ jobs:
             apt install -y cmake 
             mkdir project
       - run:
-          name: Build and run
+          name: Build
           command: |
             mkdir build
             cd build
             cmake ..
       - run:
-            ./chip8
+          name: Run
+          command: |
+            pwd
 
 workflows:
   version: 2

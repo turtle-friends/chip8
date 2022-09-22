@@ -10,9 +10,6 @@ jobs:
       - run:
           name: Build cmake
           command: |
-            apk update |
-            apk upgrade |
-            apk add alpine-sdk |
             apk add cmake
 workflows:
   cpp-workflow:

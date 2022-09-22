@@ -29,7 +29,7 @@ jobs:
       - run:
           name: Run
           command: |
-            cd build
+            make
             ls
 
 workflows:

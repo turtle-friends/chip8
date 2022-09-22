@@ -29,8 +29,9 @@ jobs:
       - run:
           name: Run
           command: |
-            make
-            ls
+            cd build
+            cmake --build .
+            ./chip8
 
 workflows:
   version: 2

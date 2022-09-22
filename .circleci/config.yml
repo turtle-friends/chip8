@@ -12,7 +12,7 @@ jobs:
           command: |
             apk update 
             apk upgrade 
-            apk build-base
+            apk add build-base
             apk add cmake
 workflows:
   cpp-workflow:

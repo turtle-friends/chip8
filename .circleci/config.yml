@@ -10,7 +10,6 @@ jobs:
       - run:
           name: Build cmake
           command: |
-            apk upgrade |
             apk add build-base |
             apk add cmake
 workflows:

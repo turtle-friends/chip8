@@ -7,6 +7,7 @@ jobs:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD
     steps:
+      - checkout
       - run:
           name: Build cmake
           command: |
@@ -14,7 +15,9 @@ jobs:
             apk upgrade 
             apk add build-base
             apk add cmake
+      - sonarcloud/scan
 workflows:
   cpp-workflow:
     jobs:
       - build
+        context: SonarCloud

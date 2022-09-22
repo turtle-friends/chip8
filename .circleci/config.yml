@@ -20,4 +20,4 @@ workflows:
   cpp-workflow:
     jobs:
       - build
-        context: SonarCloud
+          context: SonarCloud

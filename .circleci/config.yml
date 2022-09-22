@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: alpine:3.15
+      - image: ubuntu:18.04
         auth:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD
@@ -11,11 +11,11 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            apk update 
-            apk upgrade 
-            apk add build-base
-            apk add cmake
-            apk add curl
+            apt update 
+            apt upgrade 
+            apt install build-essentials
+            apt install cmake
+            apt install curl
       - sonarcloud/scan
       - run:
           name: Build and run

@@ -13,9 +13,13 @@ jobs:
           command: |
             apt update 
             apt upgrade -y 
-            apt install -y build-essential
-            apt install -y cmake
-            apt install -y curl
+            apt install -y    \ 
+              build-essential \
+              cmake           \ 
+              curl            \
+              unzip           \
+              zip 
+
       - sonarcloud/scan
       - run:
           name: Build and run

@@ -30,7 +30,7 @@ jobs:
           name: Run
           command: |
             cd build
-            ./chip8
+            ls
 
 workflows:
   version: 2

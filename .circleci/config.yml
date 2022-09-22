@@ -9,13 +9,22 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Build cmake
+          name: Install dependencies
           command: |
             apk update 
             apk upgrade 
             apk add build-base
             apk add cmake
       - sonarcloud/scan
+      - run:
+          name: Build and run
+          command: |
+            mkdir build
+            cd build
+            cmake ..
+            ./chip8
+
+
 
 orbs:
   sonarcloud: sonarsource/sonarcloud@1.0.3

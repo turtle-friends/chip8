@@ -10,7 +10,9 @@ jobs:
       - run:
           name: Build cmake
           command: |
-            apk upgrade |
+            apk update 
+            apk upgrade 
+            apk build-base
             apk add cmake
 workflows:
   cpp-workflow:

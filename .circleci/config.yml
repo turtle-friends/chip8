@@ -12,10 +12,10 @@ jobs:
           name: Install dependencies
           command: |
             apt update 
-            apt upgrade 
-            apt install build-essentials
-            apt install cmake
-            apt install curl
+            apt upgrade -y 
+            apt install -y build-essentials
+            apt install -y cmake
+            apt install -y curl
       - sonarcloud/scan
       - run:
           name: Build and run

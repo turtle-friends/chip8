@@ -18,7 +18,6 @@ jobs:
             apt install -y curl
             apt install -y zip
             apt install -y unzip
-      - sonarcloud/scan
       - run:
           name: Build and run
           command: |

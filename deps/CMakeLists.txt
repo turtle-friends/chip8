@@ -1,5 +1,4 @@
-file(GLOB DEPS_SRC **/*.c**)
-file(GLOB DEPS_INC **/*.h)
+list(APPEND CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/deps/SDL2/cmake")
 
-list(APPEND SRC ${DEPS_SRC})
-list(APPEND INC ${DEPS_INC})
+file(GLOB_RECURSE DLLs deps/SDL2.dll)
+file(COPY ${DLLs} DESTINATION ${CMAKE_BINARY_DIR})

@@ -46,6 +46,7 @@ jobs:
             cd build
             cmake --build .
       - run:
+          name: Run
           command: |
             cd build
             ./bin/chip8
@@ -53,7 +54,7 @@ jobs:
       - run:
           name: Fail
           command: |
-            curl -X POST --header "Content-Type: application/json" "https://circleci.com/api/v2/workflow/${CIRCLE_WORKFLOW_ID}/cancel?circle-token=${CIRCLE_TOKEN}" 
+            curl -X POST --header "Content-Type: application/json" "https://circleci.com/api/v2/workflow/${CIRCLE_WORKFLOW_ID}" 
       - run:
           name: Quit
           command: |

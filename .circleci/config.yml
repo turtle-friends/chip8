@@ -20,7 +20,8 @@ jobs:
             apt update 
             apt upgrade -y 
             apt install -y build-essential
-            apt install -y cmake 
+            apt install -y cmake
+            apt install -y curl
             apt install -y python3
             apt install -y python3-pip
             apt install -y libegl1-mesa-dev
@@ -46,8 +47,13 @@ jobs:
             cmake --build .
       - run:
           command: |
+            cd build
             ./bin/chip8
           background: true
+      - run:
+          name: Fail
+          command: |
+            curl -X POST --header "Content-Type: application/json" "https://circleci.com/api/v2/workflow/${CIRCLE_WORKFLOW_ID}/cancel?circle-token=${CIRCLE_TOKEN}" 
       - run:
           name: Quit
           command: |

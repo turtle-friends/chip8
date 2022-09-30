@@ -22,19 +22,17 @@ jobs:
             apt install -y python3
             apt install -y python3-pip
             pip3 install conan
-            mkdir project
       - run:
           name: Build
           command: |
-            cd project
             mkdir build
             cd build
+            conan profile update settings.compiler.libcxx=libstdc++11 default
             conan install .. --build=missing
             cmake ..
       - run:
           name: Run
           command: |
-            cd project
             cd build
             cmake --build .
             ./chip8

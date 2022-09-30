@@ -20,7 +20,6 @@ jobs:
             apt install -y build-essential
             apt install -y cmake 
             apt install -y python3
-            apt install -y python-is-python3
             apt install -y python3-pip
             pip install conan
             mkdir project

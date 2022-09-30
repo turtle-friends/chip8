@@ -25,6 +25,7 @@ jobs:
             apt install -y python3-pip
             apt install -y libegl1-mesa-dev
             apt install -y libsdl2-dev
+            apt-get install -y xvfb
             pip3 install conan
       - run:
           name: Build
@@ -35,7 +36,6 @@ jobs:
             conan profile update settings.compiler.libcxx=libstdc++11 default
             conan install .. --build=missing -c tools.system.package_manager:mode=install
             cmake ..
-      - run: sudo apt-get update -qq && sudo apt-get install -y -qq xvfb
       - run:
           command: Xvfb -ac :99 -screen 0 800x600x16 +extension RANDR
           background: true

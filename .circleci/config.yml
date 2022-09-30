@@ -40,10 +40,12 @@ jobs:
           command: Xvfb -ac :99 -screen 0 800x600x16 +extension RANDR
           background: true
       - run:
-          name: Run
+          name: Build target
           command: |
             cd build
             cmake --build .
+      - run:
+          command: |
             ./bin/chip8
           background: true
       - run:

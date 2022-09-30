@@ -10,6 +10,8 @@ executors:
 jobs:
   build_run:
     executor: ubuntu
+    environment:
+      DISPLAY: :99
     steps:
       - checkout
       - run:
@@ -33,6 +35,10 @@ jobs:
             conan profile update settings.compiler.libcxx=libstdc++11 default
             conan install .. --build=missing -c tools.system.package_manager:mode=install
             cmake ..
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq xvfb
+      - run:
+          command: Xvfb -ac :99 -screen 0 800x600x16 +extension RANDR
+          background: true
       - run:
           name: Run
           command: |

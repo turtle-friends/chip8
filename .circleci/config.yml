@@ -19,16 +19,23 @@ jobs:
             apt upgrade -y 
             apt install -y build-essential
             apt install -y cmake 
+            apt install -y python3
+            apt install -y python-is-python3
+            apt install -y python3-pip
+            pip install conan
             mkdir project
       - run:
           name: Build
           command: |
+            cd project
             mkdir build
             cd build
+            conan install .. --build=missing
             cmake ..
       - run:
           name: Run
           command: |
+            cd project
             cd build
             cmake --build .
             ./chip8

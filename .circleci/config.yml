@@ -45,6 +45,10 @@ jobs:
             cd build
             cmake --build .
             ./bin/chip8
+      - run:
+          name: Quit
+          command: |
+            circleci-agent step halt
 
 workflows:
   version: 2

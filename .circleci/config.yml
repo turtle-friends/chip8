@@ -21,6 +21,7 @@ jobs:
             apt install -y cmake 
             apt install -y python3
             apt install -y python3-pip
+            apt install -y libegl1-mesa-dev
             pip3 install conan
       - run:
           name: Build

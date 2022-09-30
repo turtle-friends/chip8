@@ -19,9 +19,9 @@ jobs:
             apt upgrade -y 
             apt install -y build-essential
             apt install -y cmake 
-            pyenv global 3.7.0
-            python -m pip install --upgrade pip setuptools wheel
-            python -m pip install conan
+            apt install -y python3
+            apt install -y python3-pip
+            pip3 install conan
             mkdir project
       - run:
           name: Build

@@ -10,6 +10,8 @@ executors:
 jobs:
   build_run:
     executor: ubuntu
+    environment:
+      DISPLAY: :99
     steps:
       - checkout
       - run:
@@ -18,20 +20,46 @@ jobs:
             apt update 
             apt upgrade -y 
             apt install -y build-essential
-            apt install -y cmake 
-            mkdir project
+            apt install -y cmake
+            apt install -y curl
+            apt install -y python3
+            apt install -y python3-pip
+            apt install -y libegl1-mesa-dev
+            apt install -y libsdl2-dev
+            apt-get install -y xvfb
+            pip3 install conan
       - run:
           name: Build
           command: |
             mkdir build
             cd build
+            conan profile new default --detect
+            conan profile update settings.compiler.libcxx=libstdc++11 default
+            conan install .. --build=missing -c tools.system.package_manager:mode=install
             cmake ..
+      - run:
+          command: Xvfb -ac :99 -screen 0 800x600x16 +extension RANDR
+          background: true
+      - run:
+          name: Build target
+          command: |
+            cd build
+            cmake --build .
       - run:
           name: Run
           command: |
             cd build
-            cmake --build .
-            ./chip8
+            ./bin/chip8
+          background: true
+      - run:
+          name: Fail
+          when: on_fail
+          command: |
+            curl -X POST --header "Content-Type: application/json" "https://circleci.com/api/v2/workflow/${CIRCLE_WORKFLOW_ID}/cancel?circle-token=${CIRCLE_TOKEN}" 
+      - run:
+          name: Quit
+          command: |
+            circleci-agent step halt
 
 workflows:
   version: 2

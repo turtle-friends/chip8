@@ -1,9 +1,31 @@
+/**
+ * @file Emulator.cpp
+ *
+ * @author Jasmine Aburialeh
+ * @author Junior Betancourt
+ * @author Richard Larancuente
+ * @author William Abreu
+ *
+ * @section LICENSE
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation; either version 2 of
+ * the License, or (at your option) any later version
+ *
+ * @section DESCRIPTION
+ *
+ * Chip8 emulator that uses SDL
+ *
+ */
+
 #include <iostream>
 
 #include <SDL2/SDL.h>
 
-int main(int argc, char* args[]) {
-  const uint16_t kWidth = 400;
+int main(int argc, char* args[])
+{
+  const uint16_t kWidth  = 400;
   const uint16_t kHeight = 300;
 
   if (SDL_Init(SDL_INIT_VIDEO) < 0) {

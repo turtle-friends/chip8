@@ -1,1 +1,10 @@
+# folders
 build
+docs/*
+
+# python envrionment folder
+env
+
+# files
+!docs/Doxyfile
+**/*.bk

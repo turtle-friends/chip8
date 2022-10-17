@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.10)
 
 project(chip8)
 
-file(GLOB SRC src/*.cc src/*.cpp)
-file(GLOB INC inc/*.inc inc/*.h)
+file(GLOB SRC src/*.cpp)
+file(GLOB INC inc/*.h)
 
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()

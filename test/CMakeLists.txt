@@ -17,4 +17,8 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE SDL_MAIN_HANDLED)
 target_compile_options(${PROJECT_NAME} PRIVATE -Wall -g)
 target_link_libraries(${PROJECT_NAME} PRIVATE ${CONAN_LIBS})
 
+if (UNIX)
+	target_link_libraries(${PROJECT_NAME} PRIVATE pthread)
+endif()
+
 add_test(gtest_tests ${CMAKE_BINARY_DIR}/bin/${PROJECT_NAME})

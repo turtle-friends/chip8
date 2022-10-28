@@ -25,8 +25,5 @@
 int main(int argc, char* args[])
 {
 	Emulator emulator;
-
-	emulator.Setup();
 	emulator.ShowWindow();
-	emulator.Terminate();
 }

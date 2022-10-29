@@ -7,6 +7,3 @@ cmake
 
 [options]
 sdl:shared=True
-
-[imports]
-bin, *.so

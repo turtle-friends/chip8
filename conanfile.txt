@@ -4,3 +4,9 @@ sdl/2.24.1
 
 [generators]
 cmake
+
+[options]
+sdl:shared=True
+
+[imports]
+bin, *.so

@@ -7,3 +7,6 @@ cmake
 
 [options]
 sdl:shared=True
+
+[imports]
+bin, *.dll, *.so -> ./bin

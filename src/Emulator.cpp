@@ -15,48 +15,74 @@
  *
  * @section DESCRIPTION
  *
- * Chip8 emulator that uses SDL
+ * Creates the windows and handles different events
  *
  */
 
 #include <iostream>
 
-#include <SDL2/SDL.h>
+#include "Emulator.h"
 
-int main(int argc, char* args[])
+Emulator::Emulator()
 {
-  const uint16_t kWidth  = 400;
-  const uint16_t kHeight = 300;
+  Setup();
+}
+
+Emulator::~Emulator()
+{
+  Terminate();
+}
+
+bool Emulator::Setup()
+{
+  bool failed = false;
 
   if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 
-    std::cerr << "SDL could not initialize! SDL_Error: " << SDL_GetError()
+    std::cerr << "SDL: Could not initialize! SDL_Error: " << SDL_GetError()
               << std::endl;
 
-    return -1;
+    failed = true;
   }
 
-  SDL_Window* window =
+  if (!(m_window =
       SDL_CreateWindow("Chip 8", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-                       kWidth, kHeight, SDL_WINDOW_SHOWN);
-  SDL_Surface* screen = SDL_GetWindowSurface(window);
+                       kWidth, kHeight, SDL_WINDOW_SHOWN))
+     ) {
+      std::cerr << "SDL: Unable to create window" << SDL_GetError()
+                << std::endl;
 
-  SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0xFF, 0xFF, 0xFF));
+      failed = true;
+  }
 
-  SDL_UpdateWindowSurface(window);
+  if (!(m_screen = SDL_GetWindowSurface(m_window))) {
+      std::cerr << "SDL: Unable to setup screen" << SDL_GetError()
+                << std::endl;
 
-  SDL_Event e;
-  bool quit = false;
+      failed = true;
 
-  while (!quit) {
-    while (SDL_PollEvent(&e)) {
-      if (e.type == SDL_QUIT)
-        quit = true;
+  }
+
+  SDL_FillRect(m_screen, NULL, SDL_MapRGB(m_screen->format, 0xFF, 0xFF, 0xFF));
+  SDL_UpdateWindowSurface(m_window);
+
+  return failed;
+
+}
+
+void Emulator::ShowWindow()
+{
+  while (!m_quit) {
+    while (SDL_PollEvent(&m_evt)) {
+      if (m_evt.type == SDL_QUIT)
+        m_quit = true;
     }
   }
+}
 
-  SDL_DestroyWindow(window);
+
+void Emulator::Terminate()
+{
+  SDL_DestroyWindow(m_window);
   SDL_Quit();
-
-  return 0;
 }

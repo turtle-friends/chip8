@@ -1,6 +1,15 @@
 [requires]
 gtest/cci.20210126
-sdl/2.24.0
+sdl/2.24.1
+zlib/1.2.12
 
 [generators]
 cmake
+
+[options]
+sdl:shared=True
+zlib:shared=True
+
+[imports]
+bin, *.dll -> ./bin
+bin, *.so -> ./bin

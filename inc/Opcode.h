@@ -1,10 +1,24 @@
 #pragma once
-
+typedef map<> 
 class Opcode {
-	virtual void Add(uint8_t& vx, uint8_t value);
-	virtual void Clear();
-	virtual void Draw(uint8_t vx, uint8_t vy, uint8_t data);
-	virtual void JumpToAdress(uint16_t address);
-	virtual void Load(uint8_t& vx, uint8_t address);
-	virtual void LoadToI(uint16_t address);
+
+	private: 
+		
+	protected:
+
+		void Add(uint8_t& vx, uint8_t value);
+		void Clear();
+		void Draw(uint8_t vx, uint8_t vy, uint8_t data);
+		void JumpToAdress(uint16_t address);
+		void Load(uint8_t& vx, uint8_t address);
+		void Opcode();
+
+	public:
+		uint8_t* GetInstruct(string vx);
+		string GetInstructs();
+
+
+
+		
+
 };

@@ -4,6 +4,8 @@
 #include <map>
 #include <string>
 
+#include "Opcode.h"
+
 class Cpu {
 public:
   Cpu() = default;
@@ -14,6 +16,7 @@ public:
   void SetRegister(std::string, void*);
 
 private:
+  Opcode m_opcodes;
   static const std::map <std::string, int> m_reg;
 
   static const uint8_t m_dt, m_sp, m_st;

@@ -31,7 +31,7 @@ pip install conan
 ```
 mkdir build
 cd build
-cmake install -s build_type=Debug -s compiler.libcxx=libstdc++11 .. --build=missing
+conan install -s build_type=Debug -s compiler.libcxx=libstdc++11 .. --build=missing
 cmake ..
 cmake --build . 
 ```

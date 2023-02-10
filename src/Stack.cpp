@@ -15,7 +15,8 @@
  *
  * @section DESCRIPTION
  *
- * Creates the windows and handles different events
+ * The stack is a memory block that is responsible for keeping
+ * track of instructions
  *
  */
 

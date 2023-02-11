@@ -24,12 +24,12 @@
 
 void Opcode::Add(uint8_t& vx, uint8_t value)
 {
-
+	vx = vx + value;
 }
 
 void Opcode::Clear()
 {
-
+	
 }
 
 void Opcode::Draw(uint8_t vx, uint8_t vy, uint8_t data)

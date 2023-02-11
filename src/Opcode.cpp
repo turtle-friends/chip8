@@ -22,34 +22,37 @@
 #include "Opcode.h"
 
 
-Opcode::Add()
-{
-    
-
-}
-
-Opcode::Clear()
+void Opcode::Add(uint8_t& vx, uint8_t value)
 {
 
 }
 
-Opcode::Draw()
+void Opcode::Clear()
 {
 
 }
 
-Opcode::JumpToAdress()
+void Opcode::Draw(uint8_t vx, uint8_t vy, uint8_t data)
 {
 
 }
 
-Opcode::Load()
+void Opcode::Jump(uint16_t address)
 {
 
 }
 
-Opcode::LoadToI()
+void Opcode::Load(uint8_t& vx, uint8_t address)
 {
-    
+
 }
- 
+
+std::array<std::string, kTotal> Opcode::Instructions()
+{
+	return {""};
+}
+
+Func Opcode::Decode(std::string vx)
+{
+	return [](void* data){};
+}

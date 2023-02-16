@@ -45,7 +45,7 @@ cmake --build .
 ## Authors
 
 Jasmine -
-[jaburialeh](https://github.com/jaburialeh)
+[jazzybear1](https://github.com/jazzybear1)
 
 Junior -
 [jrbetancourt98](https://github.com/jrbetancourt98)

@@ -51,7 +51,7 @@ Junior -
 [jrbetancourt98](https://github.com/jrbetancourt98)
 
 Richard -
-[richardllara05](https://github.com/richardllara05)
+[turtleboy00](https://github.com/turtleboy00)
 
 Willy - 
 [Willygilly](https://github.com/Willygilly)
